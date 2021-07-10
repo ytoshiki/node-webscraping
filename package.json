@@ -6,6 +6,8 @@
   "dependencies": {
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.10",
+    "dotenv": "^10.0.0",
+    "mongoose": "^5.13.2",
     "node-html-parser": "^3.3.6",
     "puppeteer": "^10.1.0",
     "request": "^2.88.2",
