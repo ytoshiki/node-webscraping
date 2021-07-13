@@ -1,6 +1,8 @@
-const request = require('request-promise');
+// const request = require('request-promise');
+const request = require('requestretry').defaults({ fullResponse: false });
 const fs = require('fs');
 const cheerio = require('cheerio');
+const ObjectsToCsv = require('objects-to-csv');
 
 async function main() {
   const result = await request.get('https://www.codingwithstefan.com/table-example/');
@@ -30,6 +32,12 @@ async function main() {
   });
 
   fs.writeFileSync('data.json', JSON.stringify(scrapedRows));
+  createCsvFile(scrapedRows);
+}
+
+async function createCsvFile(data) {
+  let csv = new ObjectsToCsv(data);
+  await csv.toDisk('./test.csv');
 }
 
 main();
